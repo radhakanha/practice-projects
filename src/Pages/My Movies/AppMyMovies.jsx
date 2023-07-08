@@ -33,7 +33,7 @@ function AppMyMovies() {
     const fetchMovies = async () => {
       setIsLoading({ ...isLoading, movieListLoading: true });
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=${APIKEY}&s=${searchText}`,
+        `https://www.omdbapi.com/?apikey=${APIKEY}&s=${searchText}`,
         { signal: controller.signal }
       );
       // console.log(response);
@@ -65,7 +65,7 @@ function AppMyMovies() {
     setIsLoading({ ...isLoading, selectedMovieLoading: true });
 
     const res = await fetch(
-      `http://www.omdbapi.com/?apikey=${APIKEY}&i=${id}`
+      `https://www.omdbapi.com/?apikey=${APIKEY}&i=${id}`
     );
     const data = await res.json();
     //If watchlist is empty
