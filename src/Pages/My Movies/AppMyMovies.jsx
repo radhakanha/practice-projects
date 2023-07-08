@@ -2,13 +2,18 @@ import Header from "./components/Header";
 import MovieDetails from "./components/MovieDetails";
 import MoviesList from "./components/MoviesList";
 import MoviesWatched from "./components/MoviesWatched";
-// import { tempMovieData, tempWatchedData } from "./assets/dummyData";
+import { tempWatchedData } from "./assets/dummyData";
 import Loader from "./UI/Loader";
 import { useEffect, useState } from "react";
 const APIKEY = "808f6538";
 const fetchLocalWatchList = () => {
   const localWatchList = localStorage.getItem("watched");
-  return JSON.parse(localWatchList);
+  if (localWatchList) {
+    return JSON.parse(localWatchList);
+  } else {
+    //When local movie watch list is empty
+    return tempWatchedData;
+  }
 };
 function AppMyMovies() {
   const [movieData, setMovieData] = useState([]);
